@@ -21,8 +21,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String signup(SignupReqDTO signupReqDTO){
-        userRepository.save(signupReqDTO.toEntity());
-        return "success";
+        if(userRepository.findByEmail(signupReqDTO.getEmail())){
+            return "failed";
+        }else {
+            userRepository.save(signupReqDTO.toEntity());
+            return "success";
+        }
     }
 
     @Override
