@@ -24,10 +24,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseDTO<?> signup(SignupReqDTO signupReqDTO){
         if(userRepository.existsByEmail(signupReqDTO.getEmail())){
-            return new ResponseDTO<>(new ErrorResponseDTO(500,"이미 존재하는 회원입니다."));
+            return new ErrorResponseDTO(500,"이미 존재하는 회원입니다.").toResponse();
         }else {
             userRepository.save(signupReqDTO.toEntity());
-            return new ResponseDTO<>(ResponseDTO.empty());
+            return new ResponseDTO<>(null);
         }
     }
 
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             User user=loggedIn.get();
             return new ResponseDTO<>(jwtProvider.token(user));
         }catch(NoSuchElementException e){
-            return new ResponseDTO<>(new ErrorResponseDTO(500,"로그인에 실패하였습니다."));
+            return new ErrorResponseDTO(500,"로그인에 실패하였습니다.").toResponse();
         }
     }
 

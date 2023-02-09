@@ -10,4 +10,7 @@ public class ErrorResponseDTO {
     private int errorCode;
     private String message;
 
+    public ResponseDTO toResponse(){
+        return new ResponseDTO<>(this.errorCode,this.message,null);
+    }
 }

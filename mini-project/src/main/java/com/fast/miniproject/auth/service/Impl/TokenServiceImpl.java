@@ -17,13 +17,13 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public ResponseDTO<?> logout(String header){
         if (checkLogout(header)){
-            return new ResponseDTO<>(new ErrorResponseDTO(500,"이미 만료된 토큰입니다."));
+            return new ErrorResponseDTO(500,"이미 만료된 토큰입니다.").toResponse();
         }else {
             try {
                 tokenRepository.save(Token.builder().token(header).build());
-                return new ResponseDTO<>(ResponseDTO.empty());
+                return new ResponseDTO<>(null);
             } catch (Exception e) {
-                return new ResponseDTO<>(new ErrorResponseDTO(500,"로그아웃 시도중 에러가 발생 했습니다."));
+                return new ErrorResponseDTO(500,"로그아웃 시도중 에러가 발생 했습니다.").toResponse();
             }
         }
     }
