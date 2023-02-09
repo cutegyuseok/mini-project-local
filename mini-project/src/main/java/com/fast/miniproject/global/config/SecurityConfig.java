@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .httpBasic().disable()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").permitAll()//로그인 유도 화면 추후 수정
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

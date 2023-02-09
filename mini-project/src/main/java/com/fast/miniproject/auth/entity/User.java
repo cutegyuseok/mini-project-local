@@ -36,7 +36,7 @@ public class User {
     @Column(name="member_phone")
     private String phone;
 
-    @Column(name="salary")
+    @Column(name="member_salary")
     private Long salary;
 
 }
