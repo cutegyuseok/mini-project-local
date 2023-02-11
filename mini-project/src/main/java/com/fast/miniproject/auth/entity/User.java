@@ -39,4 +39,6 @@ public class User {
     @Column(name="member_salary")
     private Long salary;
 
+    @Column(name = "member_job")
+    private String job;
 }
