@@ -26,7 +26,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     @Bean
     public Docket api() {
         Server serverLocal = new Server("local", "http://localhost:8080", "for local", Collections.emptyList(), Collections.emptyList());
-        Server devServer = new Server("test", "http://43.200.194.5:8080/", "for test", Collections.emptyList(), Collections.emptyList());
+        Server devServer = new Server("test", "https://kingtaeyoon.shop/", "for test", Collections.emptyList(), Collections.emptyList());
         return new Docket(DocumentationType.OAS_30) // 3.0 문서버전으로 세팅
                 .servers(serverLocal,devServer)
                 .groupName("미니프로젝트 3조")
